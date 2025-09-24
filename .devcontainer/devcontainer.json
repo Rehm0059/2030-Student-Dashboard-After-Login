@@ -1,0 +1,23 @@
+{
+  "name": "COMP2030/9030 Web Dev with Apache & MySQL",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "web",
+  "workspaceFolder": "/workspaces/COMP2030-9030-web-dev",
+  "forwardPorts": [8080],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.php-debug",
+        "felixfbecker.php-intellisense",
+        "bmewburn.vscode-intelephense-client",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint",
+        "cweijan.vscode-mysql-client2",
+        "github.vscode-pull-request-github",
+        "bierner.github-markdown-preview"
+      ]
+    }
+  },
+  "postCreateCommand": "chmod -R 777 /var/www/html"
+}
