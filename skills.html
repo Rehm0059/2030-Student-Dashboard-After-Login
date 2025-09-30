@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills & Exchange</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Skills & Exchange</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">← Back to Dashboard</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="info-banner">
+    <h2>Overview</h2>
+    <p>Browse skills, request help, and exchange credits. (Data connects later via PHP/MySQL.)</p>
+  </section>
+
+  <section class="profile-wrap" aria-labelledby="skills-listing">
+    <div class="details-panel">
+      <h2 id="skills-listing">Available Skills</h2>
+      <table class="details-table">
+        <thead>
+          <tr><th>Skill</th><th>Owner</th><th>Rating</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <!-- placeholder rows -->
+          <tr><td>HTML Basics</td><td>Student A</td><td>4.8</td><td><button disabled>Request</button></td></tr>
+          <tr><td>Math Tutoring</td><td>Student B</td><td>4.5</td><td><button disabled>Request</button></td></tr>
+        </tbody>
+      </table>
+      <p class="muted">These rows are sample placeholders; CRUD will come from the DB.</p>
+    </div>
+
+    <aside class="avatar-panel" aria-label="Your Credits">
+      <div class="card" style="padding:1rem 1.2rem;">
+        <p><strong>Your Credits:</strong> <!-- {{credits}} --> 12</p>
+        <p class="muted">Credits update after completed exchanges.</p>
+      </div>
+    </aside>
+  </section>
+</main>
+</body>
+</html>

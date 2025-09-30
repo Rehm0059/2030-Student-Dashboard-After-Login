@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Courses & Assignments</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">← Back to Dashboard</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="info-banner">
+    <h2>Course Cards</h2>
+    <p>View subjects, announcements, and submit assignments. (DB + uploads later.)</p>
+  </section>
+
+  <section class="dashboard-actions" aria-label="Your Courses">
+    <a class="card" href="#" aria-disabled="true">COMP2030<br><span class="muted">Interactive Web</span></a>
+    <a class="card" href="#" aria-disabled="true">COMP2711<br><span class="muted">Databases</span></a>
+    <a class="card" href="#" aria-disabled="true">MATH1001<br><span class="muted">Math A</span></a>
+  </section>
+
+  <section class="profile-wrap" aria-labelledby="submit">
+    <div class="details-panel">
+      <h2 id="submit">Submit Assignment</h2>
+      <table class="details-table">
+        <tbody>
+          <tr><th>Course</th><td><!-- {{course}} --> COMP2030</td></tr>
+          <tr><th>Task</th><td><!-- {{task}} --> A2 Prototype</td></tr>
+          <tr><th>Upload</th><td><input type="file" disabled></td></tr>
+        </tbody>
+      </table>
+      <div class="actions-inline"><button class="btn-primary" disabled>Upload (coming soon)</button></div>
+      <p class="muted">On submit we’ll store file meta in DB and show a receipt.</p>
+    </div>
+
+    <aside class="avatar-panel" aria-label="Announcements">
+      <div class="card" style="padding:1rem 1.2rem;">
+        <p><strong>Announcements</strong></p>
+        <ul style="text-align:left;margin:.5rem 0 0 1rem;">
+          <li>COMP2030 demo in Week 10</li>
+          <li>Canvas maintenance Sat 2–3am</li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</main>
+</body>
+</html>

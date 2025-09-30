@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Enrollment</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">← Back to Dashboard</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="info-banner">
+    <h2>Plan Your Study</h2>
+    <p>Search courses, view schedules, and confirm selections. (DB wiring later.)</p>
+  </section>
+
+  <section class="profile-wrap" aria-labelledby="course-search">
+    <div class="details-panel">
+      <h2 id="course-search">Search Courses</h2>
+      <form onsubmit="return false">
+        <table class="details-table">
+          <tbody>
+            <tr><th>Keyword</th><td><input type="text" placeholder="e.g. Web, Math" disabled></td></tr>
+            <tr><th>Day</th><td><select disabled><option>Any</option><option>Mon</option><option>Tue</option></select></td></tr>
+            <tr><th>Mode</th><td><select disabled><option>On-campus</option><option>Online</option></select></td></tr>
+          </tbody>
+        </table>
+        <div class="actions-inline"><button class="btn-primary" disabled>Search (coming soon)</button></div>
+      </form>
+
+      <h2 style="margin-top:1.5rem">Results</h2>
+      <table class="details-table">
+        <thead><tr><th>Code</th><th>Title</th><th>Time</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>COMP2030</td><td>Interactive Web Systems</td><td>Wed 1–3pm</td><td><button disabled>Add</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="avatar-panel" aria-label="Next Class">
+      <div class="card" style="padding:1.2rem">
+        <p><strong>Next Class:</strong> <!-- {{next_class}} --> Wed 1pm</p>
+        <p class="muted">This card will update from your confirmed enrollments.</p>
+      </div>
+    </aside>
+  </section>
+</main>
+</body>
+</html>
