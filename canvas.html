@@ -3,55 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas</title>
+  <title>Canvas — Courses</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>Courses & Assignments</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">← Back to Dashboard</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <h1>Courses & Assignments</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">← Back to Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <section class="info-banner">
-    <h2>Course Cards</h2>
-    <p>View subjects, announcements, and submit assignments. (DB + uploads later.)</p>
-  </section>
+  <main class="canvas-layout">
+    <section class="course-grid">
+      <a class="course-card" href="course.html">
+        <div class="thumb" style="background:#ffede9"></div>
+        <h3>COMP2030</h3>
+        <p>Interactive Web Systems</p>
+        <small>2025 Semester Two</small>
+      </a>
 
-  <section class="dashboard-actions" aria-label="Your Courses">
-    <a class="card" href="#" aria-disabled="true">COMP2030<br><span class="muted">Interactive Web</span></a>
-    <a class="card" href="#" aria-disabled="true">COMP2711<br><span class="muted">Databases</span></a>
-    <a class="card" href="#" aria-disabled="true">MATH1001<br><span class="muted">Math A</span></a>
-  </section>
+      <a class="course-card" href="course.html">
+        <div class="thumb" style="background:#ffe3e3"></div>
+        <h3>ENGR1762</h3>
+        <p>Networks & Cybersecurity</p>
+        <small>2025 Semester Two</small>
+      </a>
 
-  <section class="profile-wrap" aria-labelledby="submit">
-    <div class="details-panel">
-      <h2 id="submit">Submit Assignment</h2>
-      <table class="details-table">
-        <tbody>
-          <tr><th>Course</th><td><!-- {{course}} --> COMP2030</td></tr>
-          <tr><th>Task</th><td><!-- {{task}} --> A2 Prototype</td></tr>
-          <tr><th>Upload</th><td><input type="file" disabled></td></tr>
-        </tbody>
-      </table>
-      <div class="actions-inline"><button class="btn-primary" disabled>Upload (coming soon)</button></div>
-      <p class="muted">On submit we’ll store file meta in DB and show a receipt.</p>
-    </div>
+      <a class="course-card" href="course.html">
+        <div class="thumb" style="background:#efe3ff"></div>
+        <h3>ISS1001</h3>
+        <p>International Student Services</p>
+        <small>2025 Year</small>
+      </a>
 
-    <aside class="avatar-panel" aria-label="Announcements">
-      <div class="card" style="padding:1rem 1.2rem;">
-        <p><strong>Announcements</strong></p>
-        <ul style="text-align:left;margin:.5rem 0 0 1rem;">
-          <li>COMP2030 demo in Week 10</li>
-          <li>Canvas maintenance Sat 2–3am</li>
-        </ul>
-      </div>
+      <a class="course-card" href="course.html">
+        <div class="thumb" style="background:#ffe9c8"></div>
+        <h3>CONS2000</h3>
+        <p>Consent & Respectful Relations</p>
+        <small>2025 Year</small>
+      </a>
+    </section>
+
+    <aside class="todo-panel">
+      <h3>To-do</h3>
+      <ul class="todo-list">
+        <li><a href="#">COMP2030 — A2 Prototype due Fri 14:00</a></li>
+        <li><a href="#">ENGR1762 — STEM Support Update</a></li>
+        <li><a href="#">ISS1001 — ISS Newsletter</a></li>
+      </ul>
     </aside>
-  </section>
-</main>
+  </main>
 </body>
 </html>

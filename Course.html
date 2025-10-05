@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMP2030 — Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>COMP2030 — Course</h1>
+    <nav>
+      <ul>
+        <li><a href="canvas.html">← All Courses</a></li>
+        <li><a href="index.html">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="course-layout">
+   <aside class="course-nav">
+  <ul>
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#announcements">Announcements</a></li>
+    <li><a href="#assignments">Assignments</a></li>
+    <li><a href="#chat">Chat / Inbox</a></li>
+    <li><a href="#grades">Grades</a></li>
+    <li><a href="#links">Topic Links</a></li>
+  </ul>
+</aside>
+
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll('.course-content article');
+    const links = document.querySelectorAll('.course-nav a');
+
+    function showSection(id) {
+      sections.forEach(sec => {
+        sec.style.display = sec.id === id ? 'block' : 'none';
+      });
+      links.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href').substring(1) === id);
+      });
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        showSection(targetId);
+      });
+    });
+
+    // Show the home section by default
+    showSection('home');
+  });
+</script>
+
+
+    <section class="course-content">
+      <article id="home" class="card">
+        <h2>Welcome</h2>
+        <p>Course introduction or image banner goes here.</p>
+      </article>
+
+      <article id="modules" class="card">
+        <h2>Modules</h2>
+        <ul>
+          <li>Week 1: Overview</li>
+          <li>Week 2: HTML & CSS</li>
+          <li>Week 3: JavaScript</li>
+        </ul>
+      </article>
+
+      <article id="announcements" class="card">
+        <h2>Announcements</h2>
+        <p><b>Demo Week:</b> Bring your prototype for presentation.</p>
+      </article>
+
+      <article id="assignments" class="card">
+        <h2>Assignments</h2>
+        <p>A2: Interactive Prototype (Due Friday 14:00)</p>
+      </article>
+
+      <article id="chat" class="card">
+        <h2>Inbox / Chat</h2>
+        <p>Chat feature placeholder (will connect later).</p>
+      </article>
+
+      <article id="grades" class="card">
+        <h2>Grades</h2>
+        <p>No grades posted yet.</p>
+      </article>
+
+      <article id="links" class="card">
+        <h2>Topic Links</h2>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Topic Guide</a></li>
+          <li><a href="#">Handbook</a></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

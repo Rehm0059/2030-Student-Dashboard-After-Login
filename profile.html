@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Profile</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Student Profile</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">← Back to Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="profile-shell">
+    <div class="profile-grid">
+      <!-- LEFT: Main form -->
+      <section class="profile-card">
+        <p class="muted">Tell others what you offer. Choose skills from the list or add your own, set availability, and keep your details up to date.</p>
+
+        <h2>About</h2>
+        <table>
+          <tbody>
+            <tr><th>Name</th>   <td><input type="text" placeholder="Your name"></td></tr>
+            <tr><th>Course</th> <td><input type="text" placeholder="e.g. COMP2030"></td></tr>
+            <tr><th>Class</th>  <td><input type="text" placeholder="e.g. Tutorial TUE 2pm"></td></tr>
+            <tr><th>Campus</th> <td><input type="text" placeholder="e.g. Bedford Park"></td></tr>
+            <tr><th>Suburb</th> <td><input type="text" placeholder="e.g. Tonsley"></td></tr>
+            <tr><th>About</th>  <td><textarea placeholder="Write a short intro…"></textarea></td></tr>
+          </tbody>
+        </table>
+
+        <h2>Skills</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>Select skills</th>
+              <td class="inline-checks">
+                <label><input type="checkbox" name="skills" value="Chef"> Chef</label>
+                <label><input type="checkbox" name="skills" value="SQL"> SQL</label>
+                <label><input type="checkbox" name="skills" value="Excel"> Excel</label>
+                <label><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label>
+              </td>
+            </tr>
+            <tr>
+              <th>Other</th>
+              <td>
+                <label style="display:inline-flex;align-items:center;gap:.4rem">
+                  <input type="checkbox" id="otherToggle"> My skill is not listed
+                </label>
+                <div id="otherFields" style="display:none;margin-top:.6rem">
+                  <input type="text" placeholder="Skill name (e.g. Barista)" style="margin-bottom:.5rem">
+                  <textarea rows="3" placeholder="Short description… (max 200 chars)"></textarea>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Availability</h2>
+        <table class="availability">
+          <thead>
+            <tr><th>Day</th><th>Available</th><th>Time Window</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Mon</th><td><input type="checkbox"></td><td><input type="text" placeholder="e.g. 3–6pm"></td></tr>
+            <tr><th>Tue</th><td><input type="checkbox"></td><td><input type="text" placeholder="e.g. 10–12"></td></tr>
+            <tr><th>Wed</th><td><input type="checkbox"></td><td><input type="text" placeholder="e.g. 2–5pm"></td></tr>
+            <tr><th>Thu</th><td><input type="checkbox"></td><td><input type="text" placeholder="e.g. 9–11am"></td></tr>
+            <tr><th>Fri</th><td><input type="checkbox"></td><td><input type="text" placeholder="e.g. 4–7pm"></td></tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:1rem;display:flex;gap:.6rem">
+          <button class="btn-primary" disabled>Save (DB later)</button>
+          <button class="btn-outline" disabled>Upload Photo (later)</button>
+        </div>
+      </section>
+
+      <!-- RIGHT: Avatar & rating -->
+      <aside class="profile-aside">
+        <div class="profile-card" style="display:flex;flex-direction:column;align-items:center;gap:.7rem">
+          <div class="profile-avatar">
+            <img src="https://via.placeholder.com/180x180.png?text=Profile" alt="Profile picture" />
+          </div>
+          <button class="btn-outline" disabled>Upload Photo</button>
+        </div>
+
+        <div class="profile-card" style="text-align:center">
+          <div style="font-size:20px">⭐ ⭐ ⭐ ⭐ ☆</div>
+          <p class="muted" style="margin:.25rem 0 0">Average rating</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Show/hide "Other skill" fields
+    const toggle = document.getElementById('otherToggle');
+    const fields = document.getElementById('otherFields');
+    toggle?.addEventListener('change', ()=> fields.style.display = toggle.checked ? 'block' : 'none');
+  </script>
+</body>
+</html>
