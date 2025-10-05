@@ -1,50 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Skills & Exchange</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 <header>
   <h1>Skills & Exchange</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">← Back to Dashboard</a></li>
-    </ul>
-  </nav>
+  <nav><ul><li><a href="index.html">← Back to Dashboard</a></li></ul></nav>
 </header>
 
-<main>
-  <section class="info-banner">
-    <h2>Overview</h2>
-    <p>Browse skills, request help, and exchange credits. (Data connects later via PHP/MySQL.)</p>
-  </section>
+<main class="layout-3col">
+  <!-- LEFT RAIL -->
+  <aside class="side-rail">
+    <a class="rail-item active" href="#search">
+      <span class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span><span class="rail-label">Search</span>
+    </a>
+    <a class="rail-item" href="profile.html">
+      <span class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </span><span class="rail-label">Profile</span>
+    </a>
+    <a class="rail-item" href="#inbox">
+      <span class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </span><span class="rail-label">Inbox</span>
+    </a>
+  </aside>
 
-  <section class="profile-wrap" aria-labelledby="skills-listing">
-    <div class="details-panel">
-      <h2 id="skills-listing">Available Skills</h2>
-      <table class="details-table">
-        <thead>
-          <tr><th>Skill</th><th>Owner</th><th>Rating</th><th>Action</th></tr>
-        </thead>
-        <tbody>
-          <!-- placeholder rows -->
-          <tr><td>HTML Basics</td><td>Student A</td><td>4.8</td><td><button disabled>Request</button></td></tr>
-          <tr><td>Math Tutoring</td><td>Student B</td><td>4.5</td><td><button disabled>Request</button></td></tr>
-        </tbody>
-      </table>
-      <p class="muted">These rows are sample placeholders; CRUD will come from the DB.</p>
+  <!-- CENTER -->
+  <section id="search">
+    <section class="info-banner">
+      <h2>Welcome to Skills & Exchange</h2>
+      <p>Search classmates by skill (e.g. "chef", "SQL"), view profiles, and book services. Add your own skills to appear in search.</p>
+    </section>
+
+    <h2>Available Skills</h2>
+    <div class="toolbar">
+      <input type="search" id="skillSearch" placeholder="Search skills or names…"/>
     </div>
 
-    <aside class="avatar-panel" aria-label="Your Credits">
-      <div class="card" style="padding:1rem 1.2rem;">
-        <p><strong>Your Credits:</strong> <!-- {{credits}} --> 12</p>
-        <p class="muted">Credits update after completed exchanges.</p>
-      </div>
-    </aside>
+    <table class="details-table" id="resultsTable">
+      <thead><tr><th>Student</th><th>Skills</th><th>Rating</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Alex Kim</td><td><span class="tag">Chef</span><span class="tag">Meal Prep</span></td><td>4.7</td><td><a href="profile.html?u=alex" class="btn-primary">Profile</a></td></tr>
+        <tr><td>Sara Lee</td><td><span class="tag">SQL</span><span class="tag">Excel</span></td><td>4.5</td><td><a href="profile.html?u=sara" class="btn-primary">Profile</a></td></tr>
+        <tr><td>John Doe</td><td><span class="tag">JavaScript</span><span class="tag">HTML</span></td><td>4.8</td><td><a href="profile.html?u=john" class="btn-primary">Profile</a></td></tr>
+      </tbody>
+    </table>
   </section>
+
+  <!-- RIGHT: MESSENGER -->
+  <aside id="inbox" class="panel-card panel-right">
+    <div class="panel-head">Inbox</div>
+    <div class="messenger">
+      <div class="threads">
+        <a href="#" data-thread="alex">Alex Kim</a>
+        <a href="#" data-thread="sara">Sara Lee</a>
+        <a href="#" data-thread="john">John Doe</a>
+      </div>
+      <div class="chat">
+        <div id="chatLog" class="chat-log"><p class="muted">Select a conversation to start chatting.</p></div>
+        <form class="chat-form" onsubmit="return false;">
+          <input type="text" placeholder="Type a message…" disabled/><button class="btn-primary" type="button" disabled>Send</button>
+        </form>
+      </div>
+    </div>
+  </aside>
 </main>
+
+<!-- keep your existing JS (search + fake chat) -->
+<script>
+  const searchInput = document.getElementById('skillSearch');
+  const rows = document.querySelectorAll('#resultsTable tbody tr');
+  searchInput?.addEventListener('input', () => {
+    const v = searchInput.value.toLowerCase();
+    rows.forEach(r => r.style.display = r.textContent.toLowerCase().includes(v) ? '' : 'none');
+  });
+  const chatLog = document.getElementById('chatLog');
+  document.querySelectorAll('.threads a').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const name = a.textContent.trim();
+      chatLog.innerHTML = `<p><strong>${name}</strong></p><p class="muted">Chat feature coming soon.</p>`;
+    });
+  });
+</script>
 </body>
 </html>

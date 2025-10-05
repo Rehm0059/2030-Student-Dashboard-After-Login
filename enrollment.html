@@ -1,57 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enrollment</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <header>
   <h1>Enrollment</h1>
-  <nav>
-    <ul>
-      <li><a href="index.html">← Back to Dashboard</a></li>
-    </ul>
-  </nav>
+  <nav><ul><li><a href="index.html">← Back to Dashboard</a></li></ul></nav>
 </header>
 
-<main>
-  <section class="info-banner">
-    <h2>Plan Your Study</h2>
-    <p>Search courses, view schedules, and confirm selections. (DB wiring later.)</p>
-  </section>
+<main class="layout-3col">
+  <!-- LEFT -->
+  <aside class="side-rail">
+    <a class="rail-item active" href="#browse">
+      <span class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span><span class="rail-label">Browse</span>
+    </a>
+    <a class="rail-item" href="#my">
+      <span class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </span><span class="rail-label">My Enrolments</span>
+    </a>
+  </aside>
 
-  <section class="profile-wrap" aria-labelledby="course-search">
-    <div class="details-panel">
-      <h2 id="course-search">Search Courses</h2>
-      <form onsubmit="return false">
-        <table class="details-table">
-          <tbody>
-            <tr><th>Keyword</th><td><input type="text" placeholder="e.g. Web, Math" disabled></td></tr>
-            <tr><th>Day</th><td><select disabled><option>Any</option><option>Mon</option><option>Tue</option></select></td></tr>
-            <tr><th>Mode</th><td><select disabled><option>On-campus</option><option>Online</option></select></td></tr>
-          </tbody>
-        </table>
-        <div class="actions-inline"><button class="btn-primary" disabled>Search (coming soon)</button></div>
-      </form>
+  <!-- CENTER -->
+  <section id="browse">
+    <section class="info-banner">
+      <h2>Browse Courses & Offerings</h2>
+      <p>Search available courses, view offerings, and manage your enrolments. (DB connects later)</p>
+    </section>
 
-      <h2 style="margin-top:1.5rem">Results</h2>
-      <table class="details-table">
-        <thead><tr><th>Code</th><th>Title</th><th>Time</th><th>Action</th></tr></thead>
-        <tbody>
-          <tr><td>COMP2030</td><td>Interactive Web Systems</td><td>Wed 1–3pm</td><td><button disabled>Add</button></td></tr>
-        </tbody>
-      </table>
+    <div class="toolbar">
+      <input type="search" id="courseSearch" placeholder="Search by code or title…"/>
+      <select id="semesterFilter">
+        <option value="">All Semesters</option><option>2025 S2</option><option>2025 S1</option>
+      </select>
     </div>
 
-    <aside class="avatar-panel" aria-label="Next Class">
-      <div class="card" style="padding:1.2rem">
-        <p><strong>Next Class:</strong> <!-- {{next_class}} --> Wed 1pm</p>
-        <p class="muted">This card will update from your confirmed enrollments.</p>
-      </div>
-    </aside>
+    <table class="details-table" id="coursesTbl">
+      <thead><tr><th>Code</th><th>Title</th><th></th></tr></thead>
+      <tbody>
+        <tr>
+          <td>COMP2030</td><td>Interactive Web Systems</td>
+          <td><button class="btn-primary" data-open="c1">View Offerings</button></td>
+        </tr>
+        <tr id="offer_c1" style="display:none;background:#fafafa">
+          <td colspan="3">
+            <table class="details-table" style="margin:.5rem 0">
+              <thead><tr><th>Semester</th><th>Day</th><th>Time</th><th>Campus</th><th>Seats</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>2025 S2</td><td>Tue</td><td>14:00–16:00</td><td>Bedford Park</td><td>8 left</td><td><button class="btn-primary" disabled>Enroll</button></td></tr>
+                <tr><td>2025 S2</td><td>Thu</td><td>09:00–11:00</td><td>Tonsley</td><td>Full</td><td><button class="btn-primary" disabled>Enroll</button></td></tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>ENGR1762</td><td>Networks and Cybersecurity</td>
+          <td><button class="btn-primary" data-open="c2">View Offerings</button></td>
+        </tr>
+        <tr id="offer_c2" style="display:none;background:#fafafa">
+          <td colspan="3">
+            <table class="details-table" style="margin:.5rem 0">
+              <thead><tr><th>Semester</th><th>Day</th><th>Time</th><th>Campus</th><th>Seats</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>2025 S2</td><td>Mon</td><td>10:00–12:00</td><td>Tonsley</td><td>2 left</td><td><button class="btn-primary" disabled>Enroll</button></td></tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
+
+  <!-- RIGHT -->
+  <aside id="my" class="panel-card panel-right my-enrolments">
+    <h3>My Enrolments</h3>
+    <ul id="myList">
+      <li><span>COMP2030 – Interactive Web Systems</span><button class="btn-primary" disabled>Drop</button></li>
+      <li><span>ENGR1762 – Networks and Cybersecurity</span><button class="btn-primary" disabled>Drop</button></li>
+    </ul>
+  </aside>
 </main>
+
+<script>
+  document.querySelectorAll('[data-open]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const row = document.getElementById('offer_'+btn.dataset.open);
+      row.style.display = row.style.display === 'none' ? '' : 'none';
+    });
+  });
+  const q = document.getElementById('courseSearch');
+  q.addEventListener('input', ()=>{
+    const val = q.value.toLowerCase();
+    document.querySelectorAll('#coursesTbl tbody > tr').forEach(tr=>{
+      if (tr.id.startsWith('offer_')) return;
+      tr.style.display = tr.textContent.toLowerCase().includes(val) ? '' : 'none';
+      const offerId = tr.querySelector('[data-open]')?.dataset.open;
+      if (offerId) document.getElementById('offer_'+offerId).style.display = 'none';
+    });
+  });
+  document.getElementById('semesterFilter').addEventListener('change', ()=> {
+    alert('Semester filter will be handled by the DB later.');
+  });
+</script>
 </body>
 </html>
